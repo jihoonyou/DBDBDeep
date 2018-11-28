@@ -1,9 +1,35 @@
 <html>
   <head>
     <title>About</title>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/socket.io.slim.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-    about page
+    <div id = "insert">
+        <p>name: </p><input id = "name" type="text" name="name">
+		    <p>phone: </p><input id = "phone" type="text" name="phone">
+        <div id = "c">Insert</div>
+	</div>
+
   </body>
+  <script>
+  	$('#c').click(function(){
+	    var v = {
+			name: $("#insert #name").val(),
+			phone: $("#insert #phone").val(),
+		}
+		$.ajax({
+        type: 'post',
+        url: '/users/insert',
+		data: v,
+        success: function(data) {
+		  alert("insert 성공")
+		},
+        error: function(err) {
+          console.log(err);
+        }
+      });
+	  });
+  </script>
 </html>

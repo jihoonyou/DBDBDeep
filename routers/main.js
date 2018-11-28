@@ -10,5 +10,7 @@ router.get('/', (req, res, next) => {
 router.get('/about', (req, res, next) => {
   res.type('html').sendFile(path.join(__dirname, '../public/html/about.html'));
 });
-
+router.get('/register', (req, res, next) => {
+  res.type('html').sendFile(path.join(__dirname, '../public/html/register.html'));
+});
 module.exports = router;
