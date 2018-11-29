@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="UTF-8">
+
+  </head>
+  <script src="/js/jquery-3.2.1.min.js"></script>
+  <script src="/js/socket.io.slim.js"></script>
+  <script>
+      $(function() {
+        var socket = io();
+
+        socket.on('asd', function(msg) {
+          console.log(msg);
+        });
+
+
+       $('#login').click(function(){
+        var v = {
+        id: $("#myFORM #user_id").val(),
+        pw: $("#myFORM #pw").val()
+      }
+      $.ajax({
+          type: 'post',
+          url: '/users/login',
+          data: v,
+          success: function(data) {
+        alert("Login Success")
+        $('#cur').append(sess+" & "+data +"\n");
+      },
+          error: function(err) {
+            console.log(err);
+          }
+        });
+
+      })
+
+      });
+  </script>
+  <body>
+   <section style="margin-top: 25px">
+		<h1> Login <%= sess %> </h1>
+
+    <h2>현재 로그인 아이디 : <textarea id="cur" readonly></textarea> </h2>
+		<p>다음의 양식을 완성해주세요.</p>
+
+		<form id="myFORM">
+			<div><label>사용자 ID:
+				<input id="user_id" type="text" size= "25" autofocus required autocomplete="on">
+			</label></div><div class="warning" id="userid_"></div>
+			<div><label>비밀번호:
+				<input id="pw" type="password" size= "25" required>
+			</label></div><div class="warning" id="pw_"></div>
+
+
+			<p>
+				<div id="login">로그인</div>
+				<input type = "reset" value = "Clear">
+			</p>
+
+		</form>
+		<div id="demo"></div>
+
+	</section>
+
+  </body>
+
+</html>

@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>About</title>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/socket.io.slim.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <div id = "insert">
+        <p>id: </p><input id = "user_id" type="text" name="user_id">
+        <p>pw: </p><input id = "pw" type="password" name="password">
+        <p>name: </p><input id = "name" type="text" name="name">
+        <p>birth: </p><input id = "birth" type="text" name="birth">
+        <p>phone: </p><input id = "phone" type="text" name="phone">
+        <p>experience: </p><input id = "experience" type="text" name="experience">
+
+        <div id = "c">Insert</div>
+    </div>
+
+  </body>
+  <script>
+    $('#c').click(function(){
+      var v = {
+      id: $("#insert #user_id").val(),
+      pw: $("#insert #pw").val(),
+      name: $("#insert #name").val(),
+      birth: $("#insert #birth").val(),
+      phone: $("#insert #phone").val(),
+      //experience: $("#insert #expereince").val(),
+    }
+    $.ajax({
+      type: 'post',
+      url: '/users/insert',
+      data: v,
+      success: function(data) {
+      alert("insert 성공")
+    },
+        error: function(err) {
+          console.log(err);
+        }
+      });
+    });
+  </script>
+</html>
