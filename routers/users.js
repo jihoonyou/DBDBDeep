@@ -71,4 +71,38 @@ router.post('/edit', wrapper.asyncMiddleware(async (req, res, next) =>{
 
 }));
 
+router.post('/listOrder', wrapper.asyncMiddleware(async (req, res, next) =>{
+  const cost = req.body.cost;
+  const date = req.body.date;
+  const none = req.body.none;
+  const desc = req.body.desc;
+
+  var item="시작날짜";
+  var ord="ASC";
+
+  if(cost=="true") {
+    item="금액";
+  }
+  else if(date=="true"){
+    item="시작날짜";
+  }
+
+  if(desc=="true") {
+    ord="DESC";
+  }
+  var list_info_def;
+  var list_info_asc;
+
+  if(none=="true") {
+    list_info_def=await db.getQueryResult(`SELECT * FROM 의뢰목록 `);
+    req.session.list_info=list_info_def;
+  }
+  else {
+    list_info_asc=await db.getQueryResult(`SELECT * FROM 의뢰목록 ORDER BY ${item} ${ord} `);
+    req.session.list_info=list_info_asc;
+  }
+
+  res.render('list', {sess : req.session, list_info : req.session.list_info });
+}));
+
 module.exports = router;

@@ -42,19 +42,54 @@
     </div>
   </nav>
 <div>
-	<div id = "b">의뢰 리스트 가져오기 </div>
-	<table id = "user_list"><thead><tr><td>의뢰번호</td><td>의뢰자ID</td><td>최소경력</td><td>의뢰문서</td><td>최소프리랜서수</td><td>최대프리랜서수</td></tr></thead>
+   <div id = "b">의뢰 리스트 가져오기 </div>
+   <table id = "user_list"><thead><tr><td>의뢰번호</td><td>의뢰자ID</td><td>금액</td><td>시작날짜</td><td>최소경력</td><td>의뢰문서</td><td>최소프리랜서수</td><td>최대프리랜서수</td></tr></thead>
     <tbody>
       <% var length=list_info.length;
       for(var i = 0 ; i < length; i ++) { %>
-         <tr><td><%=list_info[i].의뢰번호 %></td><td><%= list_info[i].의뢰자ID %> </td><td><%= list_info[i].최소경력 %></td><td><%= list_info[i].의뢰문서 %></td><td><%= list_info[i].최소프리랜서수 %></td><td><%= list_info[i].최대프리랜서수 %></td></tr>
+         <tr><td><%=list_info[i].의뢰번호 %></td><td><%= list_info[i].의뢰자ID %> </td><td><%= list_info[i].금액 %> </td><td><%= list_info[i].시작날짜 %> </td><td><%= list_info[i].최소경력 %></td><td><%= list_info[i].의뢰문서 %></td><td><%= list_info[i].최소프리랜서수 %></td><td><%= list_info[i].최대프리랜서수 %></td></tr>
     <% } %>
     </tbody></table>
 </div>
 
+<form>
+  <input type="radio" name="o" value="cost" id="cost" checked> 금액<br>
+  <input type="radio" name="o" value="date" id="date"> 시작날짜<br>
+  <input type="radio" name="o" value="none" id="none"> None Ordering<br>
+  <input type="checkbox" id="desc" name ="ascending order" value="ascending order"> 내림차순<br>
+  <div id="order">정렬</div>
+</form>
+
 
 </body>
 <script>
+     $(function() {
+      $('#order').click(function(){
+        //alert($("#desc").prop("checked"));
+
+       var v = {
+          cost:$("#cost").prop("checked"),
+          date:$("#date").prop("checked"),
+          none:$("#none").prop("checked"),
+          desc:$("#desc").prop("checked")
+     }
+     $.ajax({
+         type: 'post',
+         url: '/users/listOrder',
+         data: v,
+         success: function(data) {
+           //alert('testing');
+           window.location.assign('/list');
+     },
+         error: function(err) {
+           console.log(err);
+         }
+       });
+
+     })
+
+     });
+  
      $('#logout').click(function(){
       
     $.ajax({

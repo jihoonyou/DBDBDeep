@@ -69,11 +69,16 @@ router.get('/edit', wrapper.asyncMiddleware(async (req, res, next) => {
 }));
 router.get('/list', wrapper.asyncMiddleware(async (req, res, next) => {
   var sess_info = req.session;
-  const list_info = await db.getQueryResult(`SELECT * FROM 의뢰목록`);
+  var list_info = await db.getQueryResult(`SELECT * FROM 의뢰목록`);
+  if(typeof req.session.list_info == 'undefined') {
+    req.session.list_info=list_info;
+    console.log("debbuignigngi");
+  }
+
   console.log(list_info);
          res.render('list', {
              sess : sess_info,
-             list_info : list_info
+             list_info : req.session.list_info
          })
 }));
 
