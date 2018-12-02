@@ -6,62 +6,67 @@
   </head>
   <script src="/js/jquery-3.2.1.min.js"></script>
   <script src="/js/socket.io.slim.js"></script>
-  <script>
-      $(function() {
-        var socket = io();
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-        socket.on('asd', function(msg) {
-          console.log(msg);
-        });
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script>
+  $(function() {
+    var socket = io();
+
+    socket.on('asd', function(msg) {
+      console.log(msg);
+    });
 
 
-       $('#login').click(function(){
-        var v = {
-        id: $("#myFORM #user_id").val(),
-        pw: $("#myFORM #pw").val()
+   $('#login').click(function(){
+    var v = {
+    id: $("#user_id").val(),
+    pw: $("#pw").val()
+  }
+  $.ajax({
+      type: 'post',
+      url: '/users/login',
+      data: v,
+      success: function(data) {
+        window.location.assign('/main');
+    $('#cur').append(sess+" & "+data +"\n");
+  },
+      error: function(err) {
+        console.log(err);
       }
-      $.ajax({
-          type: 'post',
-          url: '/users/login',
-          data: v,
-          success: function(data) {
-        alert("Login Success")
-        $('#cur').append(sess+" & "+data +"\n");
-      },
-          error: function(err) {
-            console.log(err);
-          }
-        });
+    });
 
-      })
+  })
 
-      });
-  </script>
+  });
+</script>
   <body>
-   <section style="margin-top: 25px">
-		<h1> Login <%= sess %> </h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/about">About</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <h2>현재 로그인 아이디 : <textarea id="cur" readonly></textarea> </h2>
-		<p>다음의 양식을 완성해주세요.</p>
-
-		<form id="myFORM">
-			<div><label>사용자 ID:
-				<input id="user_id" type="text" size= "25" autofocus required autocomplete="on">
-			</label></div><div class="warning" id="userid_"></div>
-			<div><label>비밀번호:
-				<input id="pw" type="password" size= "25" required>
-			</label></div><div class="warning" id="pw_"></div>
-
-
-			<p>
-				<div id="login">로그인</div>
-				<input type = "reset" value = "Clear">
-			</p>
-
-		</form>
-		<div id="demo"></div>
-
-	</section>
+</nav>
+<h1> Login <%= sess.result %> </h1>
+<form>
+  <div class="form-group">
+    <label>id</label>
+    <input type="text" class="form-control" id="user_id"  placeholder="Enter id">
+    <small class="form-text text-muted">Input your ID.</small>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" id="pw" placeholder="Enter Password">
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Checkbox</label>
+  </div>
+  <div id="login" class="btn btn-primary">Submit</div>
+</form>
 
   </body>
 

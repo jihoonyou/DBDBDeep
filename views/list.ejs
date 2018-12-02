@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/socket.io.slim.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   
+	<style>
+	td {border: solid 1px #000000}
+	#b {font-size:20px; background-color:#ccd0ce;    width: fit-content ;     cursor: -webkit-grab;}
+	#c {font-size:20px; background-color:#ccd0ce;    width: fit-content ;     cursor: -webkit-grab;}
+	</style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/list">의뢰목록<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/request">의뢰올리기</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/edit">개인정보 수정</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">의뢰완료요청</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+<div>
+	<div id = "b">의뢰 리스트 가져오기 </div>
+	<table id = "user_list"><thead><tr><td>의뢰번호</td><td>의뢰자ID</td><td>최소경력</td><td>의뢰문서</td><td>최소프리랜서수</td><td>최대프리랜서수</td></tr></thead>
+    <tbody>
+      <% var length=list_info.length;
+      for(var i = 0 ; i < length; i ++) { %>
+         <tr><td><%=list_info[i].의뢰번호 %></td><td><%= list_info[i].의뢰자ID %> </td><td><%= list_info[i].최소경력 %></td><td><%= list_info[i].의뢰문서 %></td><td><%= list_info[i].최소프리랜서수 %></td><td><%= list_info[i].최대프리랜서수 %></td></tr>
+    <% } %>
+    </tbody></table>
+</div>
+
+
+</body>
+</html>

@@ -7,6 +7,6 @@ module.exports = {
     user: 'root',
 	port: 3306,
     password: 'f12123',
-    database: '디비디비딥',
+    database: 'dbdbdeep',
   },
 };

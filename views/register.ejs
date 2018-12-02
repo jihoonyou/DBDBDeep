@@ -3,37 +3,73 @@
     <title>About</title>
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/socket.io.slim.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-    <div id = "insert">
-        <p>id: </p><input id = "user_id" type="text" name="user_id">
-        <p>pw: </p><input id = "pw" type="password" name="password">
-        <p>name: </p><input id = "name" type="text" name="name">
-        <p>birth: </p><input id = "birth" type="text" name="birth">
-        <p>phone: </p><input id = "phone" type="text" name="phone">
-        <p>experience: </p><input id = "experience" type="text" name="experience">
-
-        <div id = "c">Insert</div>
-    </div>
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/about">About</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">id</label>
+    <input id = "user_id" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter id">
+    <small id="emailHelp" class="form-text text-muted">id.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">pw</label>
+    <input id = "pw" type="password" class="form-control" placeholder="Password">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">name</label>
+    <input id = "name" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter 이름">
+    <small id="emailHelp" class="form-text text-muted">name.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">나이</label>
+    <input id = "age" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter 나이">
+    <small id="emailHelp" class="form-text text-muted">age.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">phone</label>
+    <input id = "phone" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter 번호">
+    <small id="emailHelp" class="form-text text-muted">phone.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">experience</label>
+    <input id = "experience" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter experience">
+    <small id="emailHelp" class="form-text text-muted">experience.</small>
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">뭐에 쓸지 고민</label>
+  </div>
+  <div id="register" class="btn btn-primary">Submit</div>
+</form>
   </body>
   <script>
-    $('#c').click(function(){
+    $('#register').click(function(){
       var v = {
-      id: $("#insert #user_id").val(),
-      pw: $("#insert #pw").val(),
-      name: $("#insert #name").val(),
-      birth: $("#insert #birth").val(),
-      phone: $("#insert #phone").val(),
-      //experience: $("#insert #expereince").val(),
+      id: $("#user_id").val(),
+      pw: $("#pw").val(),
+      name: $("#name").val(),
+      age: $("#age").val(),
+      phone: $("#phone").val(),
+      experience: $("#experience").val(),
     }
     $.ajax({
       type: 'post',
       url: '/users/insert',
       data: v,
       success: function(data) {
-      alert("insert 성공")
+        
+        window.location.assign('/login');
     },
         error: function(err) {
           console.log(err);

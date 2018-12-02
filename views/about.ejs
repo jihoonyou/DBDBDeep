@@ -4,32 +4,14 @@
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/socket.io.slim.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div id = "insert">
-        <p>name: </p><input id = "name" type="text" name="name">
-		    <p>phone: </p><input id = "phone" type="text" name="phone">
-        <div id = "c">Insert</div>
-	</div>
-
+    <a href="/register"><button type="button" class="btn btn-primary">Register</button></a>
+    <a href="/login"><button type="button" class="btn btn-secondary">Login</button></a>
   </body>
-  <script>
-  	$('#c').click(function(){
-	    var v = {
-			name: $("#insert #name").val(),
-			phone: $("#insert #phone").val(),
-		}
-		$.ajax({
-        type: 'post',
-        url: '/users/insert',
-		data: v,
-        success: function(data) {
-		  alert("insert 성공")
-		},
-        error: function(err) {
-          console.log(err);
-        }
-      });
-	  });
-  </script>
+
 </html>

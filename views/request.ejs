@@ -1,0 +1,97 @@
+<html>
+  <head>
+    <title>About</title>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/socket.io.slim.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/list">의뢰목록<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/request">의뢰올리기</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/edit">개인정보 수정</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">의뢰완료요청</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+<form>
+  <div class="form-group">
+    <label >의뢰자ID</label>
+    <input id = "user_id" type="text" class="form-control" placeholder="의뢰자ID">
+  </div>
+  <div class="form-group">
+    <label >금액</label>
+    <input id = "price" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter 금액">
+    <small class="form-text text-muted">금액.</small>
+  </div>
+  <div class="form-group">
+    <label >최소경력</label>
+    <input id = "experience" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter 경력">
+    <small class="form-text text-muted">경력.</small>
+  </div>
+  <div class="form-group">
+    <label >의뢰문서</label>
+    <input id = "doc" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter 문서">
+    <small class="form-text text-muted">의뢰문서.</small>
+  </div>
+  <div class="form-group">
+    <label >최소프리랜서 수</label>
+    <input id = "min" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter 최소 프리랜서 수">
+    <small class="form-text text-muted">최소프리랜서.</small>
+  </div>
+  <div class="form-group">
+    <label >최대프리랜서 수</label>
+    <input id = "max" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter 최대 프리랜서 수">
+    <small class="form-text text-muted">최대프리랜서.</small>
+  </div>
+
+  <div id="request" class="btn btn-primary">Request</div>
+  </form>
+
+  </body>
+  <script>
+    $('#request').click(function(){
+      var v = {
+      id: $("#user_id").val(),
+      price: $("#price").val(),
+      experience: $("#experience").val(),
+      doc: $("#doc").val(),
+      min: $("#min").val(),
+      max: $("#max").val(),
+    }
+    $.ajax({
+      type: 'post',
+      url: '/users/request',
+      data: v,
+      success: function(data) {
+        
+        window.location.assign('/list');
+    },
+        error: function(err) {
+          console.log(err);
+        }
+      });
+    });
+  </script>
+</html>
