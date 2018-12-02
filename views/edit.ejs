@@ -52,7 +52,7 @@
             <a class="nav-link" href="/list">의뢰목록<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">의뢰올리기</a>
+            <a class="nav-link" href="/request">의뢰올리기</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/edit">개인정보 수정</a>
@@ -60,7 +60,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#">의뢰완료요청</a>
           </li>
-          <li class="nav-item">
+          <li id="logout" class="nav-item">
             <a class="nav-link" href="#">logout</a>
           </li>
         </ul>
@@ -79,5 +79,19 @@
     </div>
 
   </body>
-
+  <script>
+     $('#logout').click(function(){
+      
+    $.ajax({
+      type: 'post',
+      url: '/users/logout',
+      success: function(data) {
+        window.location.assign('/about');
+    },
+        error: function(err) {
+          console.log(err);
+        }
+      });
+    });  
+  </script>
 </html>

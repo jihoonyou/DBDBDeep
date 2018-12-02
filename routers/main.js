@@ -48,6 +48,8 @@ router.get('/login', (req, res, next) => {
          })
 });
 
+
+
 router.get('/request', (req, res, next) => {
   var sess_info = req.session;
 

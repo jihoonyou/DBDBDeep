@@ -52,6 +52,13 @@ router.post('/login', wrapper.asyncMiddleware(async (req, res, next) => {
   res.render('login', {sess : req.session});
 }));
 
+router.post('/logout', wrapper.asyncMiddleware(async (req, res, next) => {
+  req.session.destroy();
+
+  res.send('success');
+}));
+
+
 router.post('/edit', wrapper.asyncMiddleware(async (req, res, next) =>{
   const newID = req.body.id;
   const newPW = req.body.pw;

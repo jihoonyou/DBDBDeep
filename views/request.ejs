@@ -29,7 +29,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#">의뢰완료요청</a>
           </li>
-          <li class="nav-item">
+          <li id="logout" class="nav-item">
             <a class="nav-link" href="#">logout</a>
           </li>
         </ul>
@@ -87,6 +87,19 @@
       success: function(data) {
         
         window.location.assign('/list');
+    },
+        error: function(err) {
+          console.log(err);
+        }
+      });
+    });
+   $('#logout').click(function(){
+      
+    $.ajax({
+      type: 'post',
+      url: '/users/logout',
+      success: function(data) {
+        window.location.assign('/about');
     },
         error: function(err) {
           console.log(err);
