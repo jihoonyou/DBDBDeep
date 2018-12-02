@@ -4,13 +4,10 @@ const app = express();
 const router = require('./router');
 const bodyParser = require('body-parser'); //db에 send할 때 필요!
 
-<<<<<<< HEAD
 //<=== additional for ejs & session
 const ejs = require('ejs');   //ejs템플릿을 사용하기 위해서 모듈 불러오는겁니다. npm install ejs --save 명령어로 까시면됩니다.
 const session = require('express-session');   //세션모듈받아오기 npm 받으셔야합니다.
-=======
 
->>>>>>> 5f567c21d6ca3c21de095ef02e8ab8bb4bbe2a98
 
 app.set('views', __dirname + '/views');   //템플릿 엔진을 쓸려고하는 세팅하는겁니다. 첫번쨰꺼는 경로지정하는겁니다.첫번째
                                             //views라는 디렉토리를 쓰겠단 말이고 두번째로 들어간 값은 views의 경로입니다. views안에 ejs파일이 있다는걸 알려주는겁니다.
@@ -19,7 +16,6 @@ app.set('views', __dirname + '/views');   //템플릿 엔진을 쓸려고하는 
 app.set('view engine', 'ejs');           // 그냥 쓰면됩니다. 이렇게 하랍니다.
 app.engine('html', require('ejs').renderFile);  //이것도 그냥 쓰면 될겁니다.
 
-<<<<<<< HEAD
  app.use(session({          //세션모듈설정
    secret: 'wd213121',
    resave: false,
@@ -34,8 +30,6 @@ app.use(express.static('public'));
 app.use('/', router);
 
 
-=======
->>>>>>> 5f567c21d6ca3c21de095ef02e8ab8bb4bbe2a98
 /*app.get('/', function (req, res) {
   res.send('Hello World!');
 });*/
@@ -43,8 +37,6 @@ app.use('/', router);
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
-<<<<<<< HEAD
-});
-=======
 
->>>>>>> 5f567c21d6ca3c21de095ef02e8ab8bb4bbe2a98
+});
+

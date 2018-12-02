@@ -47,7 +47,7 @@ router.get('/login', (req, res, next) => {
              sess : sess_info
          })
 });
-<<<<<<< HEAD
+
 router.get('/request', (req, res, next) => {
   var sess_info = req.session;
 
@@ -76,6 +76,3 @@ router.get('/list', wrapper.asyncMiddleware(async (req, res, next) => {
 }));
 
 module.exports = router;
-=======
-
->>>>>>> 5f567c21d6ca3c21de095ef02e8ab8bb4bbe2a98

@@ -4,17 +4,12 @@ const router = express.Router();
 const wrapper = require('../modules/wrapper');
 const db = require('../modules/db');
 
-<<<<<<< HEAD
 // <=== add for Session & ejs
 var session = require('express-session');   //세션모듈받아오기 npm 받으셔야합니다.
 
 // add for Session & ejs ===>
 
-=======
->>>>>>> 5f567c21d6ca3c21de095ef02e8ab8bb4bbe2a98
 
-
-<<<<<<< HEAD
 router.post('/request', wrapper.asyncMiddleware(async (req, res, next) =>{
   const ID = req.body.id;
   const price = req.body.price;
@@ -28,14 +23,11 @@ router.post('/request', wrapper.asyncMiddleware(async (req, res, next) =>{
   res.send('success');
 }));
 
-=======
-
->>>>>>> 5f567c21d6ca3c21de095ef02e8ab8bb4bbe2a98
 router.post('/insert', wrapper.asyncMiddleware(async (req, res, next) =>{
   const newID = req.body.id;
   const newPW = req.body.pw;
   const newName = req.body.name;
-<<<<<<< HEAD
+
   const newAge = req.body.age;
   const newPhone = req.body.phone;
   const newExperience = req.body.experience;
@@ -73,6 +65,3 @@ router.post('/edit', wrapper.asyncMiddleware(async (req, res, next) =>{
 }));
 
 module.exports = router;
-=======
-
->>>>>>> 5f567c21d6ca3c21de095ef02e8ab8bb4bbe2a98
