@@ -30,18 +30,157 @@
             <a class="nav-link" href="#">의뢰완료요청</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">신청목록</a>
-          </li>          
+            <a class="nav-link" href="/apply">신청목록</a>
+          </li>
           <li id="logout" class="nav-item">
             <a class="nav-link" href="#">logout</a>
           </li>
         </ul>
       </div>
     </nav>
+
+    <div>의뢰 신청목록</div>
+    <table id = "user_list" border="1"><thead><tr><td>의뢰 번호</td><td>프리랜서 ID</td><td>프리랜서수락상태</td></tr></thead>
+     <tbody>
+       <% var length=sess.apply_list_info.length;
+       for(var i = 0 ; i < length; i ++) { %>
+          <tr><td class="check_free_info" id= <%=sess.apply_list_info[i].의뢰번호 %>><%=sess.apply_list_info[i].의뢰번호 %></td><td><%= sess.apply_list_info[i].프리랜서ID %> </td><td><%= sess.apply_list_info[i].프리랜서수락상태 %> </td></tr>
+     <% } %>
+     </tbody></table>
+
+
+     <p>의뢰번호 : </p><input id = "listNum" type="text" class="form-control" name="listNum" >
+     <p>프리랜서 ID : </p><input id = "freeID" type="text" class="form-control" name="freeID" >
+     <div id="acceptApply" class="btn btn-primary">신청 수락</div>
+     <br>
+     <br>
+     <div>
+       <h2>(개별 프리랜서ID Click 시)프리랜서 정보</h2>
+       <table border="1">
+         <thead><tr><td>프리랜서ID</td><td>Name</td><td>개발경력</td><td>Java</td><td>Python</td><td>Cpp</td><td>평점</td><td>제목</td><td>주제설명</td></tr></thead>
+         <tbody>
+           <% if(sess.free_info_list) { var length=sess.free_info_list.length;
+           for(var i = 0 ; i < length; i ++) { %>
+              <tr><td><%=sess.free_info_list[i].ID %></td><td><%= sess.free_info_list[i].Name %> </td><td><%= sess.free_info_list[i].개발경력 %></td>
+              <td><%= sess.free_info_list[i].Java %></td><td><%= sess.free_info_list[i].Python %></td><td><%= sess.free_info_list[i].Cpp %></td>
+            <td><%= sess.free_info_list[i].평점/sess.free_info_list[i].평가수 %></td><td><%= sess.free_info_list[i].제목 %></td><td><%= sess.free_info_list[i].주제설명 %></td></tr>
+         <% } }%>
+         </tbody>
+       </table>
+     </div>
+
+     <br>
+     <br>
+     <br>
+     <div>(프리랜서의 완료요청에 대한) 의뢰자 수락 Pending 목록</div>
+     <table id = "user_list" border="1"><thead><tr><td>의뢰 번호</td><td>프리랜서 ID</td><td>의뢰자수락상태</td></tr></thead>
+      <tbody>
+        <% var length=sess.free_comp_list_info.length;
+        for(var i = 0 ; i < length; i ++) { %>
+           <tr><td><%=sess.free_comp_list_info[i].의뢰번호 %></td><td><%= sess.free_comp_list_info[i].프리랜서ID %> </td><td><%= sess.free_comp_list_info[i].의뢰자수락상태 %> </td></tr>
+      <% } %>
+      </tbody></table>
+
+      <p>의뢰번호 : </p><input id = "free_comp_list_num" type="text" class="form-control" name="listNum" >
+      <p>프리랜서 ID : </p><input id = "free_comp_id" type="text" class="form-control" name="freeID" >
+      <p>프리랜서 평점(수락시 입력) : </p><input id = "free_rate" type="text" class="form-control" name="freeID" >
+      <p>거부사유(거부시 입력) : </p><input id = "reject_reason" type="text" class="form-control" name="freeID" >
+      <div id="free_comp_list_info" class="btn btn-primary">신청 수락</div>
+      <div id="free_comp_list_reject" class="btn btn-primary">신청 거부</div>
+
+
   </body>
   <script>
+  $('#free_comp_list_info').click(function(){
+   var v = {
+   freeID: $("#free_comp_id").val(),
+   listNum: $("#free_comp_list_num").val(),
+   rate: $("#free_rate").val()
+    }
+ $.ajax({
+     type: 'post',
+     url: '/users/free_comp_list',
+     data: v,
+     success: function(data) {
+
+       window.location.assign('/apply')
+ },
+     error: function(err) {
+       console.log(err);
+     }
+   });
+
+ })
+
+ $('#free_comp_list_reject').click(function(){
+  var v = {
+  freeID: $("#free_comp_id").val(),
+  listNum: $("#free_comp_list_num").val(),
+  reject_reason: $("#reject_reason").val()
+
+}
+$.ajax({
+    type: 'post',
+    url: '/users/free_comp_list_reject',
+    data: v,
+    success: function(data) {
+
+      window.location.assign('/apply')
+},
+    error: function(err) {
+      console.log(err);
+    }
+  });
+
+})
+
+
+ $('#acceptApply').click(function(){
+  var v = {
+  freeID: $("#freeID").val(),
+  listNum: $("#listNum").val()
+}
+$.ajax({
+    type: 'post',
+    url: '/users/acceptApply',
+    data: v,
+    success: function(data) {
+
+      window.location.assign('/apply')
+},
+    error: function(err) {
+      console.log(err);
+    }
+  });
+
+})
+
+$('.check_free_info').click(function() {
+   var temp = $(this).attr("id");
+
+
+
+    var v = {
+     list_num : temp
+  }
+  $.ajax({
+      type: 'post',
+      url: '/users/check_free_info',
+      data: v,
+      success: function(data) {
+        //alert('testing');
+        window.location.assign('/apply');
+  },
+      error: function(err) {
+        console.log(err);
+      }
+    });
+
+  });
+
+
     $('#logout').click(function(){
-      
+
     $.ajax({
       type: 'post',
       url: '/users/logout',

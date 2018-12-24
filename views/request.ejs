@@ -30,7 +30,7 @@
             <a class="nav-link" href="#">의뢰완료요청</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">신청목록</a>
+            <a class="nav-link" href="/apply">신청목록</a>
           </li>
           <li id="logout" class="nav-item">
             <a class="nav-link" href="#">logout</a>
@@ -59,6 +59,16 @@
     <small class="form-text text-muted">의뢰문서.</small>
   </div>
   <div class="form-group">
+    <label >요구사항</label>
+    <input id = "spec" type="text" class="form-control" aria-describedby="emailHelp" placeholder="요구사항">
+    <small class="form-text text-muted">최소프리랜서.</small>
+  </div>
+  <div class="form-group">
+    <label >내용</label>
+    <input id = "contents" type="text" class="form-control" aria-describedby="emailHelp" placeholder="의뢰내용">
+    <small class="form-text text-muted">의뢰내용</small>
+  </div>
+  <div class="form-group">
     <label >최소프리랜서 수</label>
     <input id = "min" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter 최소 프리랜서 수">
     <small class="form-text text-muted">최소프리랜서.</small>
@@ -68,7 +78,31 @@
     <input id = "max" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter 최대 프리랜서 수">
     <small class="form-text text-muted">최대프리랜서.</small>
   </div>
-
+  <div class="form-group">
+    <label >시작날짜</label>
+    <input id = "startdate" type="date" class="form-control">
+    <small class="form-text text-muted">시작날짜</small>
+  </div>
+  <div class="form-group">
+    <label >종료날짜</label>
+    <input id = "enddate" type="date" class="form-control">
+    <small class="form-text text-muted">종료날짜</small>
+  </div>
+  <div class="form-group">
+    <label >Java 경력</label>
+    <input id = "java" type="number" class="form-control" min="0" max="5">
+    <small class="form-text text-muted">Java 경력</small>
+  </div>
+  <div class="form-group">
+    <label >Python 경력</label>
+    <input id = "python" type="number" class="form-control" min="0" max="5">
+    <small class="form-text text-muted">Python 경력</small>
+  </div>
+  <div class="form-group">
+    <label >C++ 경력</label>
+    <input id = "cpp" type="number" class="form-control" min="0" max="5">
+    <small class="form-text text-muted">C++ 경력</small>
+  </div>
   <div id="request" class="btn btn-primary">Request</div>
   </form>
 
@@ -82,13 +116,21 @@
       doc: $("#doc").val(),
       min: $("#min").val(),
       max: $("#max").val(),
+      startdate: $("#startdate").val(),
+      enddate: $("#enddate").val(),
+      java: $("#java").val(),
+      python: $("#python").val(),
+      cpp: $("#cpp").val(),
+      spec: $("#spec").val(),
+      contents: $("#contents").val(),
+
     }
     $.ajax({
       type: 'post',
       url: '/users/request',
       data: v,
       success: function(data) {
-        
+
         window.location.assign('/list');
     },
         error: function(err) {
@@ -97,7 +139,7 @@
       });
     });
    $('#logout').click(function(){
-      
+
     $.ajax({
       type: 'post',
       url: '/users/logout',

@@ -1,0 +1,54 @@
+[33mcommit b9dd36d9b8cee1229208851f4ac7c88831541536[m
+Author: jihoonyou <pianoetvoix@gmail.com>
+Date:   Sun Dec 2 23:16:36 2018 +0900
+
+    Add apply layout
+
+[33mcommit 9c8fb22b20a8ea84c3c4e5c90e6521942a22d4ab[m
+Author: jihoonyou <pianoetvoix@gmail.com>
+Date:   Sun Dec 2 23:02:23 2018 +0900
+
+    Add upload(multer) and sorting
+
+[33mcommit 32ed9ee24f330f8ee9d362661ecba01f83bdf1ce[m
+Author: jihoonyou <pianoetvoix@gmail.com>
+Date:   Sun Dec 2 20:30:24 2018 +0900
+
+    Add logout
+
+[33mcommit 96b80dc78953efaf4561cdbdea2c3d2052ad8c05[m
+Author: jihoonyou <pianoetvoix@gmail.com>
+Date:   Sun Dec 2 19:38:36 2018 +0900
+
+    Merge
+
+[33mcommit d61908732249753bae3c8d8b8790844a76c0a558[m
+Merge: 5a3308d 5f567c2
+Author: jihoonyou <pianoetvoix@gmail.com>
+Date:   Sun Dec 2 19:31:38 2018 +0900
+
+    Merge branch 'master' of https://github.com/jihoonyou/DBDBDeep
+
+[33mcommit 5a3308de48434da6b2ce97d0f33e3bfa0d5e9712[m
+Author: jihoonyou <pianoetvoix@gmail.com>
+Date:   Sun Dec 2 19:22:34 2018 +0900
+
+    Add session
+
+[33mcommit d504ba5f5745c121aad251a0de7097c1dd0ae650[m
+Author: jihoonyou <pianoetvoix@gmail.com>
+Date:   Thu Nov 29 17:54:38 2018 +0900
+
+    Add ejs
+
+[33mcommit 5f567c21d6ca3c21de095ef02e8ab8bb4bbe2a98[m
+Author: jihoonyou <pianoetvoix@gmail.com>
+Date:   Wed Nov 28 22:43:33 2018 +0900
+
+    Add mysql
+
+[33mcommit 49842f1a91e2bd61c97dd921316e121685bc2886[m
+Author: jihoonyou <pianoetvoix@gmail.com>
+Date:   Mon Nov 26 16:38:08 2018 +0900
+
+    First commit

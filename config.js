@@ -6,7 +6,7 @@ module.exports = {
     host: 'localhost',
     user: 'root',
 	port: 3306,
-    password: 'f12123',
+    password: 'root',
     database: 'dbdbdeep',
   },
 };

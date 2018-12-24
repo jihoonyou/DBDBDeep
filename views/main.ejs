@@ -30,8 +30,8 @@
             <a class="nav-link" href="#">의뢰완료요청</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">신청목록</a>
-          </li>          
+            <a class="nav-link" href="/apply">신청목록</a>
+          </li>
           <li id="logout" class="nav-item">
             <a class="nav-link" href="#">logout</a>
           </li>
@@ -40,8 +40,12 @@
     </nav>
   </body>
   <script>
+  //<========= login fail control
+  //2018-12-10 수정
+  <%if(sess.result==false) {%> window.location.assign('/login');<%} %>
+  // login fail control =========>
     $('#logout').click(function(){
-      
+
     $.ajax({
       type: 'post',
       url: '/users/logout',

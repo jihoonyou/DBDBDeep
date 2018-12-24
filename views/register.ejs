@@ -42,9 +42,24 @@
     <small id="emailHelp" class="form-text text-muted">phone.</small>
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">experience</label>
+    <label for="exampleInputEmail1">Develope Experience</label>
     <input id = "experience" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter experience">
-    <small id="emailHelp" class="form-text text-muted">experience.</small>
+    <small id="emailHelp" class="form-text text-muted">Develope Experience.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Java Experience</label>
+    <input id = "java" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter experience">
+    <small id="emailHelp" class="form-text text-muted">Java experience.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Python Experience</label>
+    <input id = "python" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter experience">
+    <small id="emailHelp" class="form-text text-muted">Python Experience.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">C++ Experience</label>
+    <input id = "cpp" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter experience">
+    <small id="emailHelp" class="form-text text-muted">C++ Experience.</small>
   </div>
   <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -62,13 +77,16 @@
       age: $("#age").val(),
       phone: $("#phone").val(),
       experience: $("#experience").val(),
+      java: $("#java").val(),
+      python: $("#python").val(),
+      cpp: $("#cpp").val()
     }
     $.ajax({
       type: 'post',
       url: '/users/insert',
       data: v,
       success: function(data) {
-        
+
         window.location.assign('/login');
     },
         error: function(err) {

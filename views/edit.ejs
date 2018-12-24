@@ -22,6 +22,9 @@
        name: $("#name").val(),
        age: $("#age").val(),
        phone: $("#phone").val(),
+       java: $("#java").val(),
+       python: $("#python").val(),
+       cpp: $("#cpp").val(),
        experience: $("#experience").val(),
      }
      $.ajax({
@@ -61,8 +64,8 @@
             <a class="nav-link" href="#">의뢰완료요청</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">신청목록</a>
-          </li>          
+            <a class="nav-link" href="/apply">신청목록</a>
+          </li>
           <li id="logout" class="nav-item">
             <a class="nav-link" href="#">logout</a>
           </li>
@@ -76,7 +79,10 @@
         <p>name: </p><input id = "name" type="text" class="form-control" name="name" value="<%=user_info[0].Name %>" >
         <p>birth: </p><input id = "age" type="text" class="form-control" name="birth" value="<%=user_info[0].나이 %>" >
         <p>phone: </p><input id = "phone" type="text" class="form-control" name="phone" value="<%=user_info[0].핸드폰번호 %>" >
-        <p>experience: </p><input id = "experience" type="text" class="form-control" name="experience" value="<%=user_info[0].개발경력 %>" >
+        <p>개발경력: </p><input id = "experience" type="text" class="form-control" name="experience" value="<%=user_info[0].개발경력 %>" >
+        <p>Java: </p><input id = "java" type="text" class="form-control" name="experience" value="<%=user_info[0].Java %>" >
+        <p>Python: </p><input id = "python" type="text" class="form-control" name="experience" value="<%=user_info[0].Python %>" >
+        <p>C++: </p><input id = "cpp" type="text" class="form-control" name="experience" value="<%=user_info[0].Cpp %>" >
 
         <div id = "edit" class="btn btn-primary">Submit Editted</div>
     </div>
@@ -89,7 +95,7 @@
   </body>
   <script>
      $('#logout').click(function(){
-      
+
     $.ajax({
       type: 'post',
       url: '/users/logout',
@@ -100,6 +106,6 @@
           console.log(err);
         }
       });
-    });  
+    });
   </script>
 </html>

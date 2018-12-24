@@ -10,7 +10,7 @@ var session = require('express-session');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'public/upload/')
+    cb(null, 'public/report/')
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname)
@@ -26,7 +26,7 @@ const upload = multer({
 const up = upload.fields([{name: 'img', maxCount: 1}]);
 
 router.post('/', up, (req, res, next) => {
-  res.redirect('/edit');
+  res.redirect('/list');
 });
 
 
