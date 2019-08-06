@@ -10,13 +10,59 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/about">About</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-</nav>
-<form>
+      <nav class="navbar navbar-expand-lg">
+          <a class="navbar-brand brand" href="/about">DBDBDeep</a>
+          <ul class="navbar-nav ml-left">
+              <li class=" nav-wrapper nav-item nav-content">
+                <a href="#">Features</a>
+                <a href="#">Solutions</a>
+                <a href="#">Pricing</a>
+                <a href="#">Company</a>
+              </li>
+            </ul>  
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a href="/register"><img class="little" src="./images/signin.png"/>Register</a>
+                <a href="/login"> <img class="little" src="./images/register.png"/>Sign in</a>
+              </li>
+            </ul>
+        </nav>
+
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+                <!-- Tabs Titles -->
+            
+                <!-- Icon -->
+                <div class="fadeIn first">
+                  <img class="login_logo" src="./images/computer.svg" id="icon" alt="Icon made by Freepik from www.flaticon.com" />
+                  <h1>DBDBDeep</h1>
+                </div>
+            
+                <!-- Login Form -->
+                <form>
+                  <input type="text" id="user_id" class="fadeIn second" name="login" placeholder="username">
+                  <input type="text" id="pw" class="fadeIn second" name="login" placeholder="password">
+                  <input id = "name" type="text" class="fadeIn second" aria-describedby="emailHelp" placeholder="Enter name">
+                  <input id = "age" type="text" class="fadeIn second" aria-describedby="emailHelp" placeholder="Enter age">
+                  <input id = "phone" type="text" class="fadeIn second" aria-describedby="emailHelp" placeholder="Enter phone number">
+                  <input id = "experience" type="text" class="fadeIn third" aria-describedby="emailHelp" placeholder="Enter experience">
+                  <input id = "java" type="text" class="fadeIn third" aria-describedby="emailHelp" placeholder="Enter Java experience">
+                  <input id = "python" type="text" class="fadeIn third" aria-describedby="emailHelp" placeholder="Enter Python experience">
+                  <input id = "cpp" type="text" class="fadeIn third" aria-describedby="emailHelp" placeholder="Enter Cpp experience">
+                  <input type="submit" id="register" class="fadeIn fourth" >
+                </form>
+            
+                <!-- Remind Passowrd -->
+                <div id="formFooter">
+                  <a class="underlineHover" href="/about">Go to the Site</a>
+                </div>
+          
+              </div>
+        </div>
+
+
+
+<!-- <form>
   <div class="form-group">
     <label for="exampleInputEmail1">id</label>
     <input id = "user_id" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter id">
@@ -66,7 +112,7 @@
     <label class="form-check-label" for="exampleCheck1">뭐에 쓸지 고민</label>
   </div>
   <div id="register" class="btn btn-primary">Submit</div>
-</form>
+</form> -->
   </body>
   <script>
     $('#register').click(function(){

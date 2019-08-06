@@ -3,6 +3,7 @@
     <title>Edit</title>
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/socket.io.slim.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -44,35 +45,24 @@
 
      });
    </script>
-    <body><nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="/list">의뢰목록<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/request">의뢰올리기</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/edit">개인정보 수정</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">의뢰완료요청</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/apply">신청목록</a>
-          </li>
-          <li id="logout" class="nav-item">
-            <a class="nav-link" href="#">logout</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <div id = "edit">
+    <body>
+        <nav class="navbar navbar-expand-lg ">
+            <a class="navbar-brand brand" href="#">DBDBDeep</a>
+              <ul class="navbar-nav ml-left">
+                <li class=" nav-wrapper nav-item nav-content">
+                  <a href="/list">의뢰목록</a>
+                  <a href="/request">의뢰올리기</a>
+                  <a href="/edit">개인정보수정</a>
+                  <a href="/apply">신청목록</a>
+                </li>
+                </ul>  
+              <ul class="navbar-nav ml-auto">
+                  <li id="logout" class="nav-item">
+                      <a href="#"> <img class="little" src="./images/register.png"/>Logout</a>
+                  </li>
+              </ul>
+          </nav>
+    <div id = "edit" class="box">
 
         <p>id: </p><input id = "user_id"  class="form-control" type="text" name="user_id" value= "<%=sess.name %>" <% if(sess.name!='root') { %> readonly <% } %> >
         <p>pw: </p><input id = "pw" type="password" class="form-control" name="password" value="<%=user_info[0].PW %>" >
@@ -87,10 +77,10 @@
         <div id = "edit" class="btn btn-primary">Submit Editted</div>
     </div>
 
-    <form action="/img" method="post" enctype="multipart/form-data">
+    <!-- <form action="/img" method="post" enctype="multipart/form-data">
         <input type="file" name="img">
         <input type="submit">
-    </form>
+    </form> -->
 
   </body>
   <script>

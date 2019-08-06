@@ -43,15 +43,25 @@
   });
 </script>
   <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/about">About</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-</nav>
-<h1> Login <%= sess.result %> </h1>
-<form>
+      <nav class="navbar navbar-expand-lg">
+          <a class="navbar-brand brand" href="/about">DBDBDeep</a>
+          <ul class="navbar-nav ml-left">
+              <li class=" nav-wrapper nav-item nav-content">
+                <a href="#">Features</a>
+                <a href="#">Solutions</a>
+                <a href="#">Pricing</a>
+                <a href="#">Company</a>
+              </li>
+            </ul>  
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a href="/register"><img class="little" src="./images/signin.png"/>Register</a>
+                <a href="/login"> <img class="little" src="./images/register.png"/>Sign in</a>
+              </li>
+            </ul>
+        </nav>
+<!-- <h1> Login <%= sess.result %> </h1> -->
+<!-- <form>
   <div class="form-group">
     <label>id</label>
     <input type="text" class="form-control" id="user_id"  placeholder="Enter id">
@@ -66,7 +76,32 @@
     <label class="form-check-label" for="exampleCheck1">Checkbox</label>
   </div>
   <div id="login" class="btn btn-primary">Submit</div>
-</form>
+</form> -->
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+    
+        <!-- Icon -->
+        <div class="fadeIn first">
+          <img class="login_logo" src="./images/computer.svg" id="icon" alt="Icon made by Freepik from www.flaticon.com" />
+          <h1>DBDBDeep</h1>
+        </div>
+    
+        <!-- Login Form -->
+        <form>
+          <input type="text" id="user_id" class="fadeIn second" name="login" placeholder="username">
+          <input type="text" id="pw" class="fadeIn third" name="login" placeholder="password">
+          <input type="submit" id="login" class="fadeIn fourth" >
+        </form>
+    
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+          <a class="underlineHover" href="/about">Go to the Site</a>
+        </div>
+  
+      </div>
+</div>
 
   </body>
 
